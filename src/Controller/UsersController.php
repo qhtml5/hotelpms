@@ -25,13 +25,13 @@ class UsersController extends AppController
     function login(){
         //print_r((new DefaultPasswordHasher)->hash(12345)); die();
         if ($this->request->is('post')) {
-            print_r($this->request->is('post')); die();
             $this->Auth->config('authenticate', [
                 'Form' => [
                     'fields' => ['username' => 'employee_code']
                 ]
             ]);
             $this->Auth->constructAuthenticate();
+            print_r($this->request->data()); die();
             $this->request->data['employee_code'] = $this->request->data['username'];
             $user = $this->Auth->identify();
             if ($user) {    
