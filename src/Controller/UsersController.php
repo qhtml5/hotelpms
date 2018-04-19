@@ -36,8 +36,12 @@ class UsersController extends AppController
             if ($user) {    
                 $this->Auth->setUser($user);
                 return $this->redirect($this->Auth->redirectUrl());
+            } else {
+                $this->Flash->set('Wrong username or password.', [
+                    'element' => '/Flash/error'
+                ]);
             }
-            $this->Flash->error(__('Invalid username or password, try again'));
+            
         }
     }
 

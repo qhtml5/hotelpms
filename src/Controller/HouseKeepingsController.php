@@ -60,7 +60,7 @@ class HouseKeepingsController extends InternalAppController
             $equipment_state = $this->EquipmentStates->find()->where(['equipment_info_id' => $id])->first();
             $equipment_state['clean_state'] = $this->request->data['status'];
             if ($this->EquipmentStates->save($equipment_state)){
-                $this->Flash->success(__('The rent has been saved.')); die();
+                 die();
             }
         }
     }

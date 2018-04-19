@@ -28,11 +28,6 @@
 							<div class="form-group">
                 <?= $this->Form->control('password', ['label'=> false, 'placeholder' => "password", 'name' => "password" , 'class' => "form-control", 'type' => "password"]) ?>
 							</div>
-							<div class="checkbox">
-								<label>
-									<input name="remember" type="checkbox" value="Remember Me">Remember Me
-								</label>
-							</div>
               <?= $this->Form->button(__('Login'), ['class' => "btn btn-primary"]); ?>
 					</form>
 				</div>

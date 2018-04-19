@@ -107,6 +107,9 @@ use Cake\Routing\Router;
 			</div>
 		</div><!--/.row-->	
 		<div class="row">
+			<?= $this->Flash->render('flash', [
+				    'element' => '/Flash/error'
+				]); ?>
 			<?php echo $this->Form->create('realtys', array('id'=>'form-search', 'class' => 'col-md-7'))?>	
 				<div class="col-lg-5">
 		            <?php 
@@ -184,6 +187,26 @@ use Cake\Routing\Router;
 			  <?= $this->Form->end(); ?>
 			<?php } ?>
 		</div><!-- /.row -->
+		<div class="modal fade" id="mySuccess" role="dialog">
+			    <div class="modal-dialog">
+			    
+			      <!-- Modal content-->
+			      <div class="modal-content">
+			        <div class="modal-header">
+			          <button type="button" class="close" data-dismiss="modal">&times;</button>
+			          <h4 class="modal-title">Success</h4>
+			        </div>
+			        <div class="modal-body">
+			          <p style="color: red;">Update Room SucessFull</p>
+			        </div>
+			        <div class="modal-footer">
+			        	<button type="submit" class="button-close" data-dismiss="modal">Close</button>
+			        </div>
+			      </div>
+			      
+			    </div>
+			  </div>
+		</div>
 	</div><!--/.main-->
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 	<script src="js/jquery-1.11.1.min.js"></script>
@@ -222,9 +245,13 @@ use Cake\Routing\Router;
 					url: "<?= Router::url(['controller' => 'HouseKeepings', 'action' => 'updateStatus']) ?>",
 					type: 'POST',
 					data: {status, id},
-					success: function(data) {
-						console.log(data);
-					},
+					success: function(tab){
+                    	$modal = $('#mySuccess');
+			  			$modal.modal('show');
+	                },
+	                error: function (tab) {
+	                    alert('error');
+	                }
 				});
 			});
 		});
