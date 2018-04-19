@@ -15,11 +15,8 @@ use App\Model\Value\ConfigsValue;
 
 
 /**
- * ログイン要画面（及びAPI）用のController親クラス
- * ログインが必要な画面やAPIのControllerはこのクラスを継承すること
- * ※標準実装でよければInternalAppControllerTraitをuseするのみでよい。標準外の実装をする場合は同traitのソースを参考に。
  * @package App\Controller
- * @author ocean <shimoji.koichi@suzukishouten.co.jp>
+ * @author ocean <chau.vo>
  */
 class InternalAppController extends AppController
 {
