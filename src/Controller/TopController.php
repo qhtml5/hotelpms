@@ -10,7 +10,7 @@ use Cake\ORM\TableRegistry;
  * @author ocean <trangchauuit@gmail.com>
  *
  */
-class TopController extends AppController
+class TopController extends InternalAppController
 {
     public function initialize()
     {
