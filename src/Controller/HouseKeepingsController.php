@@ -26,6 +26,7 @@ class HousekeepingsController extends InternalAppController
      * @return \Cake\Network\Response
      */
 
+    
     public function index()
     {
         // get user info
