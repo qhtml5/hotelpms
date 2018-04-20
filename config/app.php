@@ -236,7 +236,7 @@ return [
             'password' => '8d91dac0',
             //'password' => '',
             'database' => 'heroku_b138e2e2ed93668',
-            //'database' => 'pms',
+            'database' => 'pms',
             'encoding' => 'utf8',
             'timezone' => 'UTC',
             'flags' => [],
