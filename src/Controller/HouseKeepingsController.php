@@ -11,7 +11,7 @@ use App\Model\Value\ConfigsValue;
  * @author ocean <trangchauuit@gmail.com>
  *
  */
-class HouseKeepingsController extends InternalAppController
+class HousekeepingsController extends InternalAppController
 {
     public function initialize()
     {
