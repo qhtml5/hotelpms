@@ -110,7 +110,7 @@ use Cake\Routing\Router;
 			<?= $this->Flash->render('flash', [
 				    'element' => '/Flash/error'
 				]); ?>
-			<?php echo $this->Form->create('realtys', array('id'=>'form-search', 'class' => 'col-md-12'))?>	
+			<?php echo $this->Form->create('', array('id'=>'form-search', 'class' => 'col-md-12'))?>	
 				<div class="col-lg-4">
 		            <?php 
 		            $options = array();
@@ -241,8 +241,10 @@ use Cake\Routing\Router;
 		    $('.sending').on('click', function(){
 		    	var status = $("#status option:selected").val();	
 		    	var id = $("#id").val();
+		    	
+		    	console.log(status);
 				$.ajax({
-					url: "<?= Router::url(['controller' => 'HouseKeepings', 'action' => 'updateStatus']) ?>",
+					url: "<?= Router::url(['controller' => 'Housekeepings', 'action' => 'updateStatus']) ?>",
 					type: 'POST',
 					data: {status, id},
 					success: function(tab){

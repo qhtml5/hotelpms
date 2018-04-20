@@ -26,7 +26,7 @@ class HousekeepingsController extends InternalAppController
      * @return \Cake\Network\Response
      */
 
-    
+
     public function index()
     {
         // get user info
@@ -58,6 +58,7 @@ class HousekeepingsController extends InternalAppController
     public function updateStatus()
     {
         $this->set(compact('equipment_types'));
+        print_r($this->request->data()); die();
         if ( !empty($this->request->data()) ) {
             $id = $this->request->data['id'];
             $this->loadModel('EquipmentStates');
