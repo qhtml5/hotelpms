@@ -27,5 +27,9 @@ class TopController extends AppController
 
     public function index()
     {
+        // get user info
+        $user = $this->getUser();
+        $user_name = $user['first_name']. ' ' . $user['last_name'];
+        $this->set('user_name', $user_name);
     }
 }
