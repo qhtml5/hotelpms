@@ -72,7 +72,7 @@ use Cake\Routing\Router;
 				<img src="http://placehold.it/50/30a5ff/fff" class="img-responsive" alt="">
 			</div>
 			<div class="profile-usertitle">
-				<div class="profile-usertitle-name">Username</div>
+				<div class="profile-usertitle-name"><?php echo $user_name; ?></div>
 				<div class="profile-usertitle-status"><span class="indicator label-success"></span>Online</div>
 			</div>
 			<div class="clear"></div>
@@ -110,8 +110,8 @@ use Cake\Routing\Router;
 			<?= $this->Flash->render('flash', [
 				    'element' => '/Flash/error'
 				]); ?>
-			<?php echo $this->Form->create('realtys', array('id'=>'form-search', 'class' => 'col-md-7'))?>	
-				<div class="col-lg-5">
+			<?php echo $this->Form->create('realtys', array('id'=>'form-search', 'class' => 'col-md-12'))?>	
+				<div class="col-lg-4">
 		            <?php 
 		            $options = array();
 	                foreach ($equipment_types as $equipment_type) {
@@ -138,7 +138,7 @@ use Cake\Routing\Router;
 		        </div>
 		    <?= $this->Form->end(); ?>
 			<div class="col-lg-12">
-				<h2>Room List</h2>
+				<h2></h2>
 			</div>
 			<?php foreach ($equipment_infos as $equipment_info ) { ?>
 			<div class="col-md-4">

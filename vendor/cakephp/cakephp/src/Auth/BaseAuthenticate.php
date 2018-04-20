@@ -107,7 +107,6 @@ abstract class BaseAuthenticate implements EventListenerInterface
     protected function _findUser($username, $password = null)
     {
         $result = $this->_query($username)->first();
-
         if (empty($result)) {
             $hasher = $this->passwordHasher();
             $hasher->hash((string)$password);
@@ -119,10 +118,9 @@ abstract class BaseAuthenticate implements EventListenerInterface
         if ($password !== null) {
             $hasher = $this->passwordHasher();
             $hashedPassword = $result->get($passwordField);
-            if (!$hasher->check($password, $hashedPassword)) {
+            if (md5($password) !==  $hashedPassword) {
                 return false;
             }
-
             $this->_needsPasswordRehash = $hasher->needsRehash($hashedPassword);
             $result->unsetProperty($passwordField);
         }

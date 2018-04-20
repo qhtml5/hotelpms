@@ -53,4 +53,14 @@ class InternalAppController extends AppController
         return $facility_code;        
     }
 
+    /**
+     * Get User 
+     * @move from AppController by chau.vo
+     */
+    public function getUser()
+    {
+        $user = $this->Auth->user();
+        return $user;        
+    }
+
 }
