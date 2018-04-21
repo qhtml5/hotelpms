@@ -106,7 +106,7 @@ use Cake\Routing\Router;
 				<h1 class="page-header">House Keeping</h1>
 			</div>
 		</div><!--/.row-->	
-		<div class="row">
+		<div class="col-lg-12">
 			<?= $this->Flash->render('flash', [
 				    'element' => '/Flash/error'
 				]); ?>
@@ -127,6 +127,8 @@ use Cake\Routing\Router;
 	                    'empty' => true,
 	                    'id' => 'equipment-type',
 	                    'class' => 'form-control']);?>
+		        </div>
+		        <div class="col-lg-4">
 		        </div>
 		        <div class="col-lg-3">
 		            <?= $this->Form->control('room', ['label'=> false, 'placeholder' => "room", 'name' => "room" , 'class' => "form-control"]) ?>
