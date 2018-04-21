@@ -243,7 +243,7 @@ use Cake\Routing\Router;
 		    	var id = $("#id").val();
 		    	console.log(status);
 				$.ajax({
-					url: "<?php echo $this->request->webroot.'/housekeepings/updateStatus/' ?>",
+					url: "<?= Router::url(['controller' => 'Housekeepings', 'action' => 'updateStatus']) ?>",
 					type: 'POST',
 					data: {status, id},
 					success: function(tab){
