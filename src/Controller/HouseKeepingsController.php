@@ -57,9 +57,7 @@ class HousekeepingsController extends InternalAppController
 
     public function updateStatus()
     {
-        $this->set(compact('equipment_types'));
-        print_r($this->request->data()); die();
-        if ( !empty($this->request->data()) ) {
+        if ($this->request->is('ajax')) {
             $id = $this->request->data['id'];
             $this->loadModel('EquipmentStates');
             $equipment_state = $this->EquipmentStates->find()->where(['equipment_info_id' => $id])->first();

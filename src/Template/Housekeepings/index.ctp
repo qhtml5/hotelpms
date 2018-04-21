@@ -241,10 +241,9 @@ use Cake\Routing\Router;
 		    $('.sending').on('click', function(){
 		    	var status = $("#status option:selected").val();	
 		    	var id = $("#id").val();
-		    	
 		    	console.log(status);
 				$.ajax({
-					url: "<?= Router::url(['controller' => 'Housekeepings', 'action' => 'updateStatus']) ?>",
+					url: "<?php echo $this->request->webroot.'/housekeepings/updateStatus/' ?>",
 					type: 'POST',
 					data: {status, id},
 					success: function(tab){
