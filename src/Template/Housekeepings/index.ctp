@@ -128,7 +128,7 @@ use Cake\Routing\Router;
 	                    'id' => 'equipment-type',
 	                    'class' => 'form-control']);?>
 		        </div>
-		        <div class="col-lg-4">
+		        <div class="col-lg-2">
 		        </div>
 		        <div class="col-lg-3">
 		            <?= $this->Form->control('room', ['label'=> false, 'placeholder' => "room", 'name' => "room" , 'class' => "form-control"]) ?>
