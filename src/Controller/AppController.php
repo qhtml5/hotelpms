@@ -44,7 +44,6 @@ class AppController extends Controller
 
         $this->loadComponent('RequestHandler');
         $this->loadComponent('Flash');
-        $this->viewBuilder()->setLayout(false);
         $this->loadComponent('Auth', [
             'loginRedirect' => [
                 'controller' => 'Top',
