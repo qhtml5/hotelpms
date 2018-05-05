@@ -13,7 +13,6 @@ use Cake\Auth\DefaultPasswordHasher;
  */
 class UsersController extends AppController
 {
-
 	/**
      *
      * ### Get List 
@@ -23,6 +22,7 @@ class UsersController extends AppController
      */
 
     function login(){
+         $this->viewBuilder()->setLayout(false);
         //print_r((new DefaultPasswordHasher)->hash(12345)); die();
         if ($this->request->is('post')) {
             $this->Auth->config('authenticate', [

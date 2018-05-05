@@ -29,12 +29,7 @@ class HousekeepingsController extends InternalAppController
 
     public function index()
     {
-        // get user info
-        $user = $this->getUser();
-        $user_name = $user['first_name']. ' ' . $user['last_name'];
-        $this->set('user_name', $user_name);
-        $this->loadModel('EquipmentTypes');
-        $equipment_types = $this->EquipmentTypes->find()->select(['id','name'])->where(['EquipmentTypes.operator_code' => $this->getOperatorCode(),'EquipmentTypes.branch_code' => $this->getBranchCode(),'EquipmentTypes.facility_code' => $this->getFacilityCode()])->all();
+        $equipment_types = $this->getEquipmentTypes();
         $this->set(compact('equipment_types'));
         $this->loadModel('EquipmentInfos');
         $query = $this->EquipmentInfos->find()->contain(['EquipmentStates'])->where(['EquipmentInfos.sale_enable' => 1,'EquipmentStates.sale_enable' => 1, 'EquipmentInfos.operator_code' => $this->getOperatorCode(),'EquipmentInfos.branch_code' => $this->getBranchCode(),'EquipmentInfos.facility_code' => $this->getFacilityCode()]);

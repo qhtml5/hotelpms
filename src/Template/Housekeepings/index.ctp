@@ -147,7 +147,8 @@ use Cake\Routing\Router;
 		        var action = '';
 		        if(action.lastIndexOf('index') == 1 ) action = action + '/index';
 		        if(type) action = action + "?type=" + type;
-		        if(room) action = action + "&room=" + room;
+		        if(room && type) action = action + "&room=" + room;
+		        if(room && !type) action = action + "?room=" + room;
 
 		        $("#form-search").attr('action', action);
 		        $("#form-search").submit();
