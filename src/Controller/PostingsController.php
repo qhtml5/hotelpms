@@ -67,7 +67,12 @@ class PostingsController extends InternalAppController
             $this->set('room', $room);
         }
         $reservation_equipment = $query->first();
-        $this->set(compact('reservation_equipment'));    
+        $this->set(compact('reservation_equipment'));  
+
+        // Get List Minibar
+        $descriptions = $this->getListDescriptonMerchandise();
+        $this->set(compact('descriptions'));  
+
     }
 
     public function searchRoom()
@@ -89,5 +94,24 @@ class PostingsController extends InternalAppController
             }                  
             echo json_encode($json); die();
         }
+    }
+
+    public function getListDescriptonMerchandise()
+    {
+        // Data extraction from DB
+        $descriptionsTable = TableRegistry::get('Descriptions');
+        $description_datas = $descriptionsTable->find('all')
+            ->select(['name','price'])
+            ->contain(['BranchInfos','FacilityInfos', 'DescriptionCategories'])
+            ->order(['Descriptions.id' => 'asc'])
+            ->where([
+                'OR' =>
+                    [['Descriptions.branch_code' => $this->getBranchCode()], ['Descriptions.branch_code IS NULL']],
+                'OR' =>
+                    [['Descriptions.facility_code' => $this->getFacilityCode()], ['Descriptions.facility_code IS NULL']],
+                'Descriptions.operator_code ' => $this->getOperatorCode(),
+                'Descriptions.description_kind in ' => [ConfigsValue::DRK_MERCHANDISE] ])
+            ->all();
+        return $description_datas;
     }
 }

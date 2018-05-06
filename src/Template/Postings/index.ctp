@@ -124,18 +124,21 @@ use Cake\Routing\Router;
 						<thead>
 							<tr>
 								<th>#</th>
-								<th>Cate</th>
 								<th>Name</th>
+								<th>Price</th>
 								<th>Number</th>
 							</tr>
 						</thead>
 						<tbody>
+							<?php foreach ($descriptions as $key => $description) 
+								{ ?>
 							<tr>
 								<td><input type="checkbox" class="checkthis" /></td>
-								<td>Kilgore</td>
-								<td>Trout</td>
-								<td>kilgore</td>
+								<td><?php echo $description['name']; ?></td>
+								<td><?php echo $description['price']; ?></td>
+								<td><?= $this->Form->control('number', ['label'=> false, 'name' => "number", 'class' => "form-control", 'type' => "number"]) ?></td>
 							</tr>
+							<?php } ?>
 						</tbody>
 					</table>
 				</div>
