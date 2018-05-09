@@ -31,7 +31,7 @@ use Cake\ORM\TableRegistry;
  * Class BaseTable
  *
  * @package App\Model\Table
- * @author ty.huynh <huynh.hong.ty@suzutek.vn>
+ * @author vo.chau
  */
 class BaseTable extends Table
 {

@@ -21,7 +21,7 @@ use App\Controller\Component\SalesInfosTrait;
 /**
  * Class PaymentDetailsTable
  * @package App\Model\Table
- * @author ty.huynh <huynh.hong.ty@suzutek.vn>
+ * @author vo.chau
  * @date 2017-Jan-18
  */
 class PaymentDetailsTable extends BaseTable
@@ -42,7 +42,7 @@ class PaymentDetailsTable extends BaseTable
          * 2. belongs to sales details
          * 3. belongs to currency conversions
          *
-         * @author ty.huynh
+         * @author vo.chau
          */
         $this->addAssociations([
             'belongsTo' => [

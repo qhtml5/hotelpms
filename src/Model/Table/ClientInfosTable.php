@@ -31,7 +31,7 @@ class ClientInfosTable extends BaseTable
          * 1. belong to CurrencyConversions
          * 2. has many reservation infos
          *
-         * @author ty.huynh
+         * @author vo.chau
          */
         $this->addAssociations([
             'belongsTo' => [

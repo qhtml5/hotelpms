@@ -27,7 +27,7 @@ class ReservationDetail extends Entity
     /**
      * Get currency conversion when process exchange amount
      *
-     * @author ty.huynh <huynh.hong.ty@suzutek.vn>
+     * @author vo.chau
      * @date 2017-10-12
      * @param int $currencyId
      * @param string|null $branchCode
@@ -111,7 +111,7 @@ class ReservationDetail extends Entity
      * - Calculate refund = deposit - total
      * - Filter tax and service = 0
      *
-     * @author ty.huynh <huynh.hong.ty@suzutek.vn>
+     * @author vo.chau
      * @date 2017-Feb-09
      * @param array $salesDetails list of item need to be calculated
      * @return array
@@ -249,7 +249,7 @@ class ReservationDetail extends Entity
     /**
      * Add calculation information to sales info
      *
-     * @author ty.huynh <huynh.hong.ty@suzutek.vn>
+     * @author vo.chau
      * @date 2017-Feb-13
      * @param \App\Model\Entity\SalesInfo $salesInfo
      * @param null|\App\Model\Entity\CurrencyConversion $currency
@@ -286,7 +286,7 @@ class ReservationDetail extends Entity
      * - description_kind = 3 (tax) = 4 (additional)
      * - tax_attribution != 0
      *
-     * @author ty.huynh <huynh.hong.ty@suzutek.vn>
+     * @author vo.chau
      * @date 2017-Feb-10
      * @param int $descriptionKind
      * @see \App\Model\Value\ConfigsValue::DRK_*
@@ -321,7 +321,7 @@ class ReservationDetail extends Entity
     /**
      * explore the list of reservation equipment stayed
      *
-     * @author ty.huynh <huynh.hong.ty@suzutek.vn>
+     * @author vo.chau
      * @date 2017-10-09
      * @return \Cake\Collection\Collection|null
      */
@@ -345,7 +345,7 @@ class ReservationDetail extends Entity
     /**
      * explore the last use of reservation equipment
      *
-     * @author ty.huynh <huynh.hong.ty@suzutek.vn>
+     * @author vo.chau
      * @date 2017-10-09
      * @return \App\Model\Entity\ReservationEquipment|null
      */
@@ -363,7 +363,7 @@ class ReservationDetail extends Entity
     /**
      * explore the first use of reservation equipment
      *
-     * @author ty.huynh <huynh.hong.ty@suzutek.vn>
+     * @author vo.chau
      * @date 2017-10-09
      * @return \App\Model\Entity\ReservationEquipment|null
      */
@@ -380,7 +380,7 @@ class ReservationDetail extends Entity
 
     /**
      * format display sales info
-     * @author ty.huynh <huynh.hong.ty@suzutek.vn>
+     * @author vo.chau
      * @date 2017-10-10
      * @return $this
      */
@@ -398,7 +398,7 @@ class ReservationDetail extends Entity
     /**
      * Check if this reservation detail can be paid?
      *
-     * @author ty.huynh <huynh.hong.ty@suzutek.vn>
+     * @author vo.chau
      * @date 2017-10-11
      * @return bool
      */

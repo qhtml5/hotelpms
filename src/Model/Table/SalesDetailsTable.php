@@ -19,7 +19,7 @@ use Cake\Validation\Validator;
 /**
  * Class SalesDetailsTable
  * @package App\Model\Table
- * @author ty.huynh <huynh.hong.ty@suzutek.vn>
+ * @author vo.chau
  * @date 2017-Jan-18
  */
 class SalesDetailsTable extends BaseTable
@@ -40,7 +40,7 @@ class SalesDetailsTable extends BaseTable
          * 2. belongs to sales infos
          * 3. belongs to descriptions
          *
-         * @author ty.huynh
+         * @author vo.chau
          */
         $this->addAssociations([
             'hasOne' => [

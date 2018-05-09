@@ -13,7 +13,7 @@ use Cake\ORM\TableRegistry;
 /**
  * Class SalesInfosTable
  * @package App\Model\Table
- * @author ty.huynh <huynh.hong.ty@suzutek.vn>
+ * @author vo.chau
  * @date 2017-Jan-18
  */
 class SalesInfosTable extends BaseTable
@@ -36,7 +36,7 @@ class SalesInfosTable extends BaseTable
          * 4. belongs to reservation details
          * 5. belongs to equipment infos
          *
-         * @author ty.huynh
+         * @author vo.chau
          */
         $this->addAssociations([
             'hasMany' => [
@@ -82,7 +82,7 @@ class SalesInfosTable extends BaseTable
      * ]
      *
      * ```
-     * @author ty.huynh <huynh.hong.ty@suzutek.vn>
+     * @author vo.chau
      * @date 2017-10-06
      * @param array $options
      * @return \App\Model\Entity\SalesInfo|null|bool
@@ -117,7 +117,7 @@ class SalesInfosTable extends BaseTable
     }
 
     /**
-     * @author ty.huynh <huynh.hong.ty@suzutek.vn>
+     * @author vo.chau
      * @date 2017-10-09
      * @param $reservationDetailId
      * @return SalesInfo
@@ -162,7 +162,7 @@ class SalesInfosTable extends BaseTable
     }
 
     /**
-     * @author ty.huynh <huynh.hong.ty@suzutek.vn>
+     * @author vo.chau
      * @date 2017-10-09
      * @param $reservationDetailId
      * @return bool|\Cake\Datasource\EntityInterface|mixed
@@ -198,7 +198,7 @@ class SalesInfosTable extends BaseTable
     }
 
     /**
-     * @author ty.huynh <huynh.hong.ty@suzutek.vn>
+     * @author vo.chau
      * @date 2017-10-09
      * @return bool|\Cake\Datasource\EntityInterface|mixed
      */
@@ -213,7 +213,7 @@ class SalesInfosTable extends BaseTable
 
     //==== Finder ====
     /**
-     * @author ty.huynh <huynh.hong.ty@suzutek.vn>
+     * @author vo.chau
      * @date 2017-10-09
      * @param Query $query
      * @param array $options
@@ -230,7 +230,7 @@ class SalesInfosTable extends BaseTable
     /**
      * Finder only not paid sales infos
      *
-     * @author ty.huynh <huynh.hong.ty@suzutek.vn>
+     * @author vo.chau
      * @date 2017-10-11
      * @param Query $query
      * @param array $options
@@ -249,7 +249,7 @@ class SalesInfosTable extends BaseTable
     }
 
     /**
-     * @author ty.huynh <huynh.hong.ty@suzutek.vn>
+     * @author vo.chau
      * @date 2017-10-09
      * @param $reservationDetailId
      * @return mixed
@@ -275,7 +275,7 @@ class SalesInfosTable extends BaseTable
      * If null then find from locale info table
      * If null then get default constant
      *
-     * @author ty.huynh <huynh.hong.ty@suzutek.vn>
+     * @author vo.chau
      * @date 2017-10-09
      * @param int $clientInfoId
      * @param int $reservationInfoId

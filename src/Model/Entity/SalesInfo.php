@@ -13,7 +13,7 @@ use Cake\ORM\Entity;
 /**
  * Class SalesInfo
  * @package App\Model\Entity
- * @author ty.huynh <huynh.hong.ty@suzutek.vn>
+ * @author vo.chau
  * @date 2017-Jan-18
  * @property int id
  * @property string operator_code
@@ -37,7 +37,7 @@ class SalesInfo extends Entity
     protected $_virtual = ['is_paid'];
 
     /**
-     * @author ty.huynh <huynh.hong.ty@suzutek.vn>
+     * @author vo.chau
      * @return int
      */
     public function _getIsPaid()
@@ -59,7 +59,7 @@ class SalesInfo extends Entity
     /**
      * Remove paid up sales details of sales info
      *
-     * @author ty.huynh <huynh.hong.ty@suzutek.vn>
+     * @author vo.chau
      * @date 2017-10-09
      * @param bool $showDetailPaidSalesInfo want to show sales detail of paid sales info
      * @return $this
@@ -86,7 +86,7 @@ class SalesInfo extends Entity
      * Remove not transfer description kind like tax, additional, deposit, discount.
      * Using in transfer to filter list sales detail can not transfer
      *
-     * @author ty.huynh <huynh.hong.ty@suzutek.vn>
+     * @author vo.chau
      * @date 2017-10-10
      * @return $this
      */
@@ -106,7 +106,7 @@ class SalesInfo extends Entity
      * Calculate total discount rate of one sales info
      * Use to check discount rate can exceed 100 or not
      *
-     * @author ty.huynh <huynh.hong.ty@suzutek.vn>
+     * @author vo.chau
      * @date 2017-10-13
      * @return float
      */
@@ -134,7 +134,7 @@ class SalesInfo extends Entity
      *      'reset_sales_detail' : 1/0 (true/false)
      * ]
      * ```
-     * @author ty.huynh <huynh.hong.ty@suzutek.vn>
+     * @author vo.chau
      * @date 2017-10-10
      * @param array $options
      * @return SalesInfo

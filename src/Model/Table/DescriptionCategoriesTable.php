@@ -12,7 +12,7 @@ use Cake\ORM\TableRegistry;
 /**
  * Class DescriptionsTable
  * @package App\Model\Table
- * @author ty.huynh <huynh.hong.ty@suzutek.vn>
+ * @author vo.chau
  */
 class DescriptionCategoriesTable extends BaseTable
 {
@@ -30,7 +30,7 @@ class DescriptionCategoriesTable extends BaseTable
          * configure mapping for Description Categories
          * 1. has many descriptions
          *
-         * @author ty.huynh
+         * @author vo.chau
          */
         $this->addAssociations([
             'hasMany' => [

@@ -33,7 +33,7 @@ class DescriptionsTable extends BaseTable
          * 1. has one equipment charge infos
          * 2. has many sales details
          * 3. belongs to description categories
-         * @author ty.huynh
+         * @author vo.chau
          */
         $this->addAssociations([
             'hasOne' => [

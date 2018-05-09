@@ -22,7 +22,7 @@ class EquipmentStatesTable extends BaseTable
          * configure mapping for Equipments States
          * 1. belongs to equipment states
          *
-         * @author ty.huynh
+         * @author vo.chau
          */
         $this->addAssociations([
             'belongsTo' => [
