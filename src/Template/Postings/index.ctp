@@ -46,7 +46,7 @@ use Cake\Routing\Router;
                                 <tbody>
                                     <tr>
                                         <td width="35%">Name</td>
-                                        <td width="65%"><a href="#" id="username" data-type="text" data-pk="1" data-title="Enter username" class="editable editable-click" data-original-title="" title=""><?php echo $reservation_equipment['reservation_detail']['client_info']['first_name']. ' '.$reservation_equipment['reservation_detail']['client_info']['last_name']; ?></a></td>
+                                        <td width="65%"><a href="#" id="username" data-type="text" data-pk="1" data-title="Enter username" class="editable editable-click" data-original-title="" title=""><?php if ( !empty($reservation_equipment)) echo $reservation_equipment['reservation_detail']['client_info']['first_name']. ' '.$reservation_equipment['reservation_detail']['client_info']['last_name']; ?></a></td>
                                     </tr>
                                     <tr>
                                         <td>Arrival Date</td>
@@ -67,12 +67,12 @@ use Cake\Routing\Router;
                                     <tr>
                                         <td>BookingID</td>
                                         <td>
-                                            <a href="#" id="dob" data-type="combodate" data-value="1984-05-15" data-format="YYYY-MM-DD" data-viewformat="DD/MM/YYYY" data-template="D / MMM / YYYY" data-pk="1" data-title="Select Date of birth" class="editable editable-click"><?php echo $reservation_equipment['reservation_detail']['reservation_info']['reservation_number']; ?></a>
+                                            <a href="#" id="dob" data-type="combodate" data-value="1984-05-15" data-format="YYYY-MM-DD" data-viewformat="DD/MM/YYYY" data-template="D / MMM / YYYY" data-pk="1" data-title="Select Date of birth" class="editable editable-click"><?php if ( !empty($reservation_equipment)) echo $reservation_equipment['reservation_detail']['reservation_info']['reservation_number']; ?></a>
                                         </td>
                                     </tr>
                                     <tr>
                                         <td>Room Type</td>
-                                        <td><a href="#" id="comments" data-type="textarea" data-pk="1" data-placeholder="Your comments here..." data-title="Enter comments" class="editable editable-pre-wrapped editable-click"><?php echo $reservation_equipment['equipment_type']['name']; ?></a></td>
+                                        <td><a href="#" id="comments" data-type="textarea" data-pk="1" data-placeholder="Your comments here..." data-title="Enter comments" class="editable editable-pre-wrapped editable-click"><?php if ( !empty($reservation_equipment)) echo $reservation_equipment['equipment_type']['name']; ?></a></td>
                                     </tr>
                                 </tbody>
                             </table>

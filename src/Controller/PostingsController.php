@@ -67,13 +67,12 @@ class PostingsController extends InternalAppController
             $room = $this->request->query('room');
             $query = $query->where(['EquipmentInfos.id' => $room]);
             $this->set('room', $room);
-        }
-        $reservation_equipment = $query->first();
-        $this->set(compact('reservation_equipment')); 
-        // Get List Minibar
-        $descriptions = $this->getListDescriptonMerchandise();
-        $this->set(compact('descriptions'));  
-
+            $reservation_equipment = $query->first();
+            $this->set(compact('reservation_equipment')); 
+            // Get List Minibar
+            $descriptions = $this->getListDescriptonMerchandise();
+            $this->set(compact('descriptions')); 
+        } 
     }
 
     public function searchRoom()
