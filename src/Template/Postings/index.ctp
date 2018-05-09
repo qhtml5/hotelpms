@@ -104,6 +104,7 @@ use Cake\Routing\Router;
 	      
 	    </div>
 	  </div>
+	 <?php echo $this->Form->create('', array('id'=>'form-search', 'class' => 'col-md-12'))?>
 	<div class="modal fade" id="myPost" role="dialog">
 	    <div class="modal-dialog">
 	    
@@ -113,14 +114,15 @@ use Cake\Routing\Router;
 	          <button type="button" class="close" data-dismiss="modal">&times;</button>
 	          <h4 class="modal-title">Minibar List</h4>
 	        </div>
+	        <?= $this->Form->hidden('id',['id'=> 'reservation_detail_id', 'value' => $reservation_equipment['reservation_detail']['id']]); ?>
 	        <div class="modal-body">
 	          <div class="row">
 			<div class="col-md-12">
 				<div class="panel panel-primary">
 					<div class="panel-body">
-						<input type="text" class="form-control" id="dev-table-filter" data-action="filter" data-filters="#dev-table" placeholder="Filter" />
+						<input class="form-control" id="myInput" type="text" placeholder="Search..">
 					</div>
-					<table class="table table-hover" id="dev-table">
+					<table class="table table-hover" id="recordsTable">
 						<thead>
 							<tr>
 								<th>#</th>
@@ -129,30 +131,68 @@ use Cake\Routing\Router;
 								<th>Number</th>
 							</tr>
 						</thead>
-						<tbody>
+						<tbody id = "myTable">
 							<?php foreach ($descriptions as $key => $description) 
 								{ ?>
 							<tr>
-								<td><input type="checkbox" class="checkthis" /></td>
+								<td><input type='checkbox' id='pos_<?php echo $description['id']; ?>'></td>
 								<td><?php echo $description['name']; ?></td>
 								<td><?php echo $description['price']; ?></td>
-								<td><?= $this->Form->control('number', ['label'=> false, 'name' => "number", 'class' => "form-control", 'type' => "number"]) ?></td>
+								<td><input type='number' id='number_<?php echo $description['id']; ?>', disabled ?></td>
 							</tr>
+							<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+							<script type="text/javascript">
+								$(document).ready(function(){
+									var update_disposal = function () {
+							            if ($("#pos_<?php echo $description['id'];?>").is(":checked")) {
+							                $('#number_<?php echo $description['id']; ?>').prop('disabled', false);
+							                $('#number_<?php echo $description['id']; ?>').val(1);
+							            }
+							            else {
+							                $('#number_<?php echo $description['id']; ?>').prop('disabled', 'disabled');
+							                $('#number_<?php echo $description['id']; ?>').val();
+							            }
+							        };
+							        $("#pos_<?php echo $description['id'];?>").change(update_disposal);
+							    });
+							</script>
 							<?php } ?>
 						</tbody>
 					</table>
+
 				</div>
 			</div>
 		</div>
 	        </div>
 	        <div class="modal-footer">
-	        	<button type="submit" class="ok" data-dismiss="modal">Yes</button>
+	        	<button type="submit" class="posting-yes" data-dismiss="modal">Yes</button>
 	        	<button type="submit" class="button-close" data-dismiss="modal">No</button>
 	        </div>
 	      </div>
-	      
+	     
 	    </div>
 	  </div>
+	  <div class="modal fade" id="mySuccess" role="dialog">
+			    <div class="modal-dialog">
+			    
+			      <!-- Modal content-->
+			      <div class="modal-content">
+			        <div class="modal-header">
+			          <button type="button" class="close" data-dismiss="modal">&times;</button>
+			          <h4 class="modal-title">Success</h4>
+			        </div>
+			        <div class="modal-body">
+			          <p style="color: red;">Post Minibar SucessFull</p>
+			        </div>
+			        <div class="modal-footer">
+			        	<button type="submit" class="button-close" data-dismiss="modal">Close</button>
+			        </div>
+			      </div>
+			      
+			    </div>
+			  </div>
+		</div>
+	  <?= $this->Form->end(); ?>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 	<script src="js/jquery-1.11.1.min.js"></script>
 	<script src="js/bootstrap.min.js"></script>
@@ -176,6 +216,13 @@ use Cake\Routing\Router;
 		        $("#form-search").attr('action', action);
 		        $("#form-search").submit();
 		    });
+
+		    $("#myInput").on("keyup", function() {
+			    var value = $(this).val().toLowerCase();
+			    $("#myTable tr").filter(function() {
+			      $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+			    });
+			});
 
 		 //    $('.sending').on('click', function(){
 		 //    	var status = $("#status option:selected").val();	
@@ -223,6 +270,39 @@ use Cake\Routing\Router;
 	        $modal = $('#myPost');
 			$modal.modal('show');
 	    });
+
+	    $('.posting-yes').on('click', function(){
+	     	var post_arr = [];
+	     	var number_arr = [];
+	     	var reservation_detail_id = $("#reservation_detail_id").val();
+	     	var number = $("#number").val();
+	    	$('#recordsTable input[type=checkbox]').each(function() {
+		      if (jQuery(this).is(":checked")) {
+		        var id = this.id;
+		        var splitid = id.split('_');
+		        var postid = splitid[1];
+		        post_arr.push(postid);
+		        number_arr.push(number);
+		        
+		      }
+		    });
+	    	if(post_arr.length > 0){
+	    		console.log(123); 
+		        // AJAX Request
+		        $.ajax({
+		          	url: "<?= Router::url(['controller' => 'Postings', 'action' => 'postRoom']) ?>",
+					type: 'POST',
+					data: {post_id: post_arr, reservation_detail_id : reservation_detail_id, number : number_arr},
+					success: function(tab){
+	                	$modal = $('#mySuccess');
+			  			$modal.modal('show');
+	                },
+	                error: function (tab) {
+	                    alert('error');
+	                }
+		        });
+		    } 
+		});
 	</script>
 
 	<style type="text/css">
@@ -230,6 +310,12 @@ use Cake\Routing\Router;
 		    height: 34px !important;
 		}
 		.sending {
+			width: 85px;
+		    height: 34px;
+		    border-radius: 25px;
+		    background: cornflowerblue;
+		}
+		.posting-yes {
 			width: 85px;
 		    height: 34px;
 		    border-radius: 25px;

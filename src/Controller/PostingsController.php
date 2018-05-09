@@ -3,6 +3,8 @@ namespace App\Controller;
 
 use Cake\ORM\TableRegistry;
 use App\Model\Value\ConfigsValue;
+use Cake\I18n\Date;
+use Cake\I18n\Time;
 
 
 /**
@@ -67,8 +69,7 @@ class PostingsController extends InternalAppController
             $this->set('room', $room);
         }
         $reservation_equipment = $query->first();
-        $this->set(compact('reservation_equipment'));  
-
+        $this->set(compact('reservation_equipment')); 
         // Get List Minibar
         $descriptions = $this->getListDescriptonMerchandise();
         $this->set(compact('descriptions'));  
@@ -96,12 +97,38 @@ class PostingsController extends InternalAppController
         }
     }
 
+    public function postRoom()
+    {
+        if ($this->request->is('ajax')) {
+            $reservation_detail_id = $_POST['reservation_detail_id'];
+            $salesInfo = TableRegistry::get('SalesInfos')->commandGetOrCreate(['reservation_detail_id' =>$reservation_detail_id]);
+            $sale_info_id = $salesInfo['id'];
+            $post_id = $_POST['post_id'];
+            $number = $_POST['number'];
+            if ( !empty($post_id) && !empty($number) ) {
+                $salesDetailsTable = TableRegistry::get('SalesDetails');
+                foreach ($post_id as $key => $post) {
+                    $sale_detail_data['operator_code'] =  $this->getOperatorCode();
+                    $sale_detail_data['sales_info_id'] = $sale_info_id;
+                    $sale_detail_data['sales_datetime'] = new Time();
+                    $sale_detail_data['sales_date'] = $business_date = $this->getBusinessDate();
+                    $sale_detail_data['quantity'] = $number[$key];
+                    $sale_detail_data['description_id'] = $post;
+                    $sale_detail = $salesDetailsTable->newEntity();
+                    $sale_detail = $salesDetailsTable->patchEntity($sale_detail, $sale_detail_data);
+                    $sale_detail = $salesDetailsTable->save($sale_detail);                       
+                }
+            }
+        }
+        die();
+    }
+
     public function getListDescriptonMerchandise()
     {
         // Data extraction from DB
         $descriptionsTable = TableRegistry::get('Descriptions');
         $description_datas = $descriptionsTable->find('all')
-            ->select(['name','price'])
+            ->select(['id','name','price'])
             ->contain(['BranchInfos','FacilityInfos', 'DescriptionCategories'])
             ->order(['Descriptions.id' => 'asc'])
             ->where([

@@ -272,6 +272,8 @@ class ConfigsValue
     /** @var int paid 0x01 */
     const PMS_PAID = 1;
 
+    const FOLIO_LANG_DEFAULT = 'vi';
+
     // Event for payment
     /** @var string */
     const EVT_UPDATE_SUBSCRIPTION_AFTER_PAYMENT = 'OnepayTransaction.afterReturn.updateSubscriptionInfo';
