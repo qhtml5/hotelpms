@@ -47,6 +47,12 @@ use Cake\Routing\Router;
                                     <tr>
                                         <td width="35%">Name</td>
                                         <td width="65%"><a href="#" id="username" data-type="text" data-pk="1" data-title="Enter username" class="editable editable-click" data-original-title="" title=""><?php if ( !empty($reservation_equipment)) echo $reservation_equipment['reservation_detail']['client_info']['first_name']. ' '.$reservation_equipment['reservation_detail']['client_info']['last_name']; ?></a></td>
+                                        <?php if( !empty($reservation_equipment) ) { ?>
+                                        <?= $this->Form->hidden('name',['id'=> 'name', 'value' => $reservation_equipment['reservation_detail']['client_info']['first_name']. ' '.$reservation_equipment['reservation_detail']['client_info']['last_name']]); ?>
+                                    <?php } else { ?>
+                                    <?= $this->Form->hidden('name',['id'=> 'name', 'value' => '']); ?>
+                                    <?php } ?>
+
                                     </tr>
                                     <tr>
                                         <td>Arrival Date</td>
@@ -81,7 +87,7 @@ use Cake\Routing\Router;
                 </div>
 			</div>
 				<div class="panel-footer">
-					<button type="submit" class="btn btn-lg btn-block btn-danger" data-dismiss="modal" id="btn-post">Posting</button>
+					<button type="submit" class="btn btn-lg btn-block btn-danger" data-dismiss="modal" id="btn-post" disabled="true">Posting</button>
 				</div>
 		</div>
 	<div class="modal fade" id="myModal" role="dialog">
@@ -138,7 +144,7 @@ use Cake\Routing\Router;
 								<td><input type='checkbox' id='pos_<?php echo $description['id']; ?>'></td>
 								<td><?php echo $description['name']; ?></td>
 								<td><?php echo $description['price']; ?></td>
-								<td><input type='number' id='number_<?php echo $description['id']; ?>', disabled ?></td>
+								<td><input type='number', class="form-control" id='number_<?php echo $description['id']; ?>', disabled ?></td>
 							</tr>
 							<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 							<script type="text/javascript">
@@ -216,7 +222,11 @@ use Cake\Routing\Router;
 		        $("#form-search").attr('action', action);
 		        $("#form-search").submit();
 		    });
-
+		    if ( $('#name').val().length > 0 ) {
+				$('#btn-post').prop('disabled', false);
+			} else {
+				$('#btn-post').prop('disabled', true);
+			}
 		    $("#myInput").on("keyup", function() {
 			    var value = $(this).val().toLowerCase();
 			    $("#myTable tr").filter(function() {
